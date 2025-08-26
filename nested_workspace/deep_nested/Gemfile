@@ -1,0 +1,68 @@
+source 'https://rubygems.org'
+
+# FINAL LEVEL: Contains the actual HIGH/CRITICAL vulnerabilities
+
+# HIGH PRIORITY DEPENDENCY CONFUSION VULNERABILITIES:
+gem 'extremely_specific_test_gem_dc_12345'
+gem 'custom_missing_ruby_lib_99999' 
+gem 'fake_authentication_gem_dc'
+gem 'nonexistent_pdf_processor_ruby'
+gem 'missing_api_wrapper_gem_test'
+
+# CRITICAL: Version specifier vulnerabilities
+gem 'loose_version_gem', '>= 0'  # Extremely loose version
+gem 'any_version_gem', '*'       # Wildcard version
+gem 'no_constraint_gem'          # No version constraint
+
+# CRITICAL: GitHub repository hijacking vulnerabilities
+gem 'github_hijack_gem_1', github: 'fake_user_does_not_exist/missing_repo_test'
+gem 'github_hijack_gem_2', git: 'https://github.com/nonexistent_org_dc/test_vulnerability'
+gem 'github_hijack_gem_3', git: 'git://github.com/missing_account_123/fake_gem_repo'
+
+# PATH DEPENDENCY VULNERABILITIES (these paths don't exist)
+gem 'missing_local_gem_1', path: './missing_path_1'
+gem 'missing_local_gem_2', path: '../missing_parent_path'
+gem 'missing_local_gem_3', path: './subfolder/missing_deep_path'
+
+# GEMSPEC PATH VULNERABILITIES
+gemspec path: './missing_gemspec_path'
+
+group :development do
+  # HIGH: Development-specific vulnerabilities
+  gem 'dev_missing_gem_dc_test'
+  gem 'debug_extension_fake_gem'
+  
+  # PATH vulnerabilities in development group
+  gem 'dev_local_missing', path: './dev_tools/missing_path'
+end
+
+group :test do
+  # HIGH: Test-specific vulnerabilities  
+  gem 'test_helper_missing_gem_dc'
+  gem 'spec_extension_fake_lib'
+  
+  # CRITICAL: GitHub hijacking in test group
+  gem 'test_github_gem', github: 'test_org_missing/spec_helpers_fake'
+end
+
+group :production do
+  # CRITICAL: Production group vulnerabilities (highest risk)
+  gem 'prod_missing_gem_critical_dc'
+  gem 'performance_monitor_fake_gem'
+  
+  # CRITICAL: Loose production dependency
+  gem 'production_critical_gem', '>= 0'
+end
+
+# PLATFORM-SPECIFIC GEMS (likely to not exist)
+platforms :ruby do
+  gem 'ruby_specific_missing_gem_dc'
+end
+
+platforms :jruby do
+  gem 'jruby_extension_fake_gem'
+end
+
+platforms :mingw, :mswin, :x64_mingw do
+  gem 'windows_specific_missing_dc'
+end
