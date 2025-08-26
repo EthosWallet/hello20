@@ -1,0 +1,37 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    # CRITICAL: Lockfile with missing/hijacked sources
+    missing_gem_locked_version (1.2.3)
+    fake_locked_dependency_dc (0.1.0)
+    
+    # Sources that don't exist (for source confusion testing)
+  remote: https://gems.fake-private-registry-test.com/
+  specs:
+    private_source_missing_gem (2.0.0)
+    
+  remote: git://github.com/missing_git_org/fake_gem_repo
+  revision: abcd1234567890
+  specs:
+    git_based_missing_gem (1.0.0)
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  # These should trigger dependency confusion detection
+  extremely_specific_test_gem_dc_12345
+  custom_missing_ruby_lib_99999
+  fake_authentication_gem_dc
+  nonexistent_pdf_processor_ruby
+  missing_api_wrapper_gem_test
+  
+  # Locked versions of missing gems
+  missing_gem_locked_version (~> 1.2.0)
+  fake_locked_dependency_dc
+  private_source_missing_gem
+  git_based_missing_gem
+
+BUNDLED WITH
+   2.4.10
