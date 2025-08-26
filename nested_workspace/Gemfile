@@ -1,0 +1,24 @@
+source 'https://rubygems.org'
+
+gem 'sqlite3', '~> 1.4'
+
+# NESTED WORKSPACE REFERENCE - Points to deeper nested file
+gem 'deep_nested_gem', path: './deep_nested'
+
+# GEMSPEC REFERENCE - Points to deeper level
+gemspec path: './deep_nested'
+
+# HIGH: More dependency confusion vulnerabilities
+gem 'another_missing_gem_dc_test'
+
+# CRITICAL: Another GitHub hijacking opportunity  
+gem 'hijack_test_gem', git: 'https://github.com/missing_org_123/nonexistent_repo'
+
+# Path gem that should be missing
+gem 'missing_nested_gem', path: '../missing_sibling_path'
+
+group :test do
+  # HIGH: Test-specific dependency confusion
+  gem 'rspec_missing_extension_test'
+  gem 'capybara_fake_addon_dc'
+end
