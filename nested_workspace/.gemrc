@@ -1,0 +1,12 @@
+# CRITICAL: Custom gem sources that may not exist
+---
+:backtrace: false
+:bulk_threshold: 1000
+:sources:
+  - https://rubygems.org/
+  - https://gems.fake-company-registry.com/  # CRITICAL: Fake private source
+  - https://gems.missing-internal-repo.net/  # HIGH: Missing internal source
+:update_sources: true
+:verbose: true
+:gem: --no-document
+:benchmark: false
