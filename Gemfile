@@ -11,6 +11,8 @@ gemspec path: './nested_workspace'
 # HIGH PRIORITY: Regular dependency confusion (package that likely doesn't exist)
 gem 'nonexistent_test_gem_12345_dc'
 
+gem 'hijack_test_gem', git: 'https://github.com/missing_org_1234567/nonexistent_repo'
+
 # CRITICAL: GitHub repo hijacking vulnerability
 gem 'vulnerable_github_gem', github: 'fake_org_that_does_not_exist/test_repo_missing'
 
